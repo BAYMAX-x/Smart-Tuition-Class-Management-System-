@@ -3,4 +3,3 @@
 @section('page-title', 'Dashboard · Smart Tuition CMS')
 
 @section('content')
-@endsection
