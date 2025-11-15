@@ -1,24 +1,119 @@
 @extends('layouts.portal')
 
-@section('page-title', 'Courses · Smart Tuition CMS')
+@section('page-title', 'Courses - Smart Tuition CMS')
 
 @section('content')
+@php
+    $courses = [
+        [
+            'code' => 'IT2045',
+            'title' => 'Web Application',
+            'lecturer' => 'Dr. Jagath Perera',
+            'overview' => 'Learn the core building blocks of modern interfaces including HTML5, CSS, and vanilla JS before stepping into frameworks.',
+            'completed' => 4,
+            'lessons' => 10,
+            'cover' => 'https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=800',
+            'updated_at' => '20 min ago',
+        ],
+        [
+            'code' => 'IT2032',
+            'title' => 'Database Concepts',
+            'lecturer' => 'Ms. Ravindi Nandasena',
+            'overview' => 'From entity-relationship diagrams to writing optimized SQL queries and configuring PostgreSQL for production workloads.',
+            'completed' => 2,
+            'lessons' => 8,
+            'cover' => 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800',
+            'updated_at' => '1 hr ago',
+        ],
+        [
+            'code' => 'IT2067',
+            'title' => 'Mobile UX Studio',
+            'lecturer' => 'Mr. Supun Perera',
+            'overview' => 'Weekly design sprints to iterate on native mobile experiences with Figma, usability testing, and motion guidelines.',
+            'completed' => 6,
+            'lessons' => 12,
+            'cover' => 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800',
+            'updated_at' => 'Yesterday',
+        ],
+    ];
+@endphp
 
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-  <div class="progress-bar" style="width: 25%">25%</div>
-</div><br>
-    <a href="#" class="btn btn-primary">View</a>
-  </div>
-</div>
+<section class="courses">
+    <header class="courses__header">
+        <div class="courses__intro">
+            <p class="courses__eyebrow">Academic Year - 2024</p>
+            <h1>Available Courses</h1>
+            <p>Monitor how every module is progressing, who teaches it, and what topics are being covered.</p>
+        </div>
+        <button class="chip-button" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6H20" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M7 12H17" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M10 18H14" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+            Filter
+        </button>
+    </header>
 
+    <div class="courses__grid">
+        @foreach ($courses as $course)
+            <article class="course-card">
+                <figure class="course-card__cover">
+                    <img src="{{ $course['cover'] }}" alt="{{ $course['title'] }} module cover">
+                    <figcaption>
+                        <span class="course-card__code">{{ $course['code'] }}</span>
+                        <span class="course-card__name">{{ $course['title'] }}</span>
+                    </figcaption>
+                    <button class="course-card__options" type="button" aria-label="Course quick actions">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </figure>
 
+                <div class="course-card__body">
+                    <div class="course-card__progress" role="group" aria-label="Course progress">
+                        <div class="course-card__progress-track"
+                            role="progressbar"
+                            aria-valuemin="0"
+                            aria-valuemax="{{ $course['lessons'] }}"
+                            aria-valuenow="{{ $course['completed'] }}">
+                            <span class="course-card__progress-fill"
+                                style="--progress: {{ ($course['completed'] / $course['lessons']) * 100 }}%;"></span>
+                        </div>
+                        <span class="course-card__progress-count">
+                            {{ $course['completed'] }}/{{ $course['lessons'] }}
+                        </span>
+                    </div>
 
+                    <dl class="course-card__meta">
+                        <div>
+                            <dt>Lecturer</dt>
+                            <dd>{{ $course['lecturer'] }}</dd>
+                        </div>
+                        <div>
+                            <dt>Overview</dt>
+                            <dd>{{ $course['overview'] }}</dd>
+                        </div>
+                    </dl>
+                </div>
 
-
-
+                <footer class="course-card__footer">
+                    <p class="course-card__status">
+                        <span class="status-dot" aria-hidden="true"></span>
+                        Updated {{ $course['updated_at'] }}
+                    </p>
+                    <a href="#" class="course-card__action">
+                        <span>view</span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M5 12C5 12 8.5 6 12 6C15.5 6 19 12 19 12C19 12 15.5 18 12 18C8.5 18 5 12 5 12Z"
+                                stroke-width="1.5" fill="none"></path>
+                            <circle cx="12" cy="12" r="2" stroke-width="1.5" fill="none"></circle>
+                        </svg>
+                    </a>
+                </footer>
+            </article>
+        @endforeach
+    </div>
+</section>
 @endsection
