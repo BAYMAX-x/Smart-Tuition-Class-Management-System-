@@ -6,8 +6,8 @@
 @php
     $courses = [
         [
-            'code' => 'IT2045',
-            'title' => 'Web Application',
+            'code' => '01',
+            'title' => 'ICT',
             'lecturer' => 'Dr. Jagath Perera',
             'overview' => 'Learn the core building blocks of modern interfaces including HTML5, CSS, and vanilla JS before stepping into frameworks.',
             'completed' => 4,
@@ -16,8 +16,8 @@
             'updated_at' => '20 min ago',
         ],
         [
-            'code' => 'IT2032',
-            'title' => 'Database Concepts',
+            'code' => '02',
+            'title' => 'MATHS',
             'lecturer' => 'Ms. Ravindi Nandasena',
             'overview' => 'From entity-relationship diagrams to writing optimized SQL queries and configuring PostgreSQL for production workloads.',
             'completed' => 2,
@@ -26,8 +26,8 @@
             'updated_at' => '1 hr ago',
         ],
         [
-            'code' => 'IT2067',
-            'title' => 'Mobile UX Studio',
+            'code' => '03',
+            'title' => 'SCIENCE',
             'lecturer' => 'Mr. Supun Perera',
             'overview' => 'Weekly design sprints to iterate on native mobile experiences with Figma, usability testing, and motion guidelines.',
             'completed' => 6,
@@ -43,16 +43,7 @@
         <div class="courses__intro">
             <p class="courses__eyebrow">Academic Year - 2024</p>
             <h1>Available Courses</h1>
-            <p>Monitor how every module is progressing, who teaches it, and what topics are being covered.</p>
         </div>
-        <button class="chip-button" type="button">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 6H20" stroke-width="1.5" stroke-linecap="round" />
-                <path d="M7 12H17" stroke-width="1.5" stroke-linecap="round" />
-                <path d="M10 18H14" stroke-width="1.5" stroke-linecap="round" />
-            </svg>
-            Filter
-        </button>
     </header>
 
     <div class="courses__grid">
